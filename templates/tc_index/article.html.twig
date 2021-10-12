@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article index{% endblock %}
+
+{% block body %}
+    <h1>Article index</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Image</th>
+            <th>CreatedAt</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for articles in article %}
+            <tr>
+                <td>{{ articles.id }}</td>
+                <td>{{ articles.title }}</td>
+                <td>{{ articles.content }}</td>
+                <img src="{{ articles.image }}" class="image">
+                <td>{{ articles.createdAt ? articles.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('article_show', {'id': articles.id}) }}">show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
