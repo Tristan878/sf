@@ -5,35 +5,25 @@
 {% block body %}
     <h1>Article index</h1>
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Title</th>
-            <th>Content</th>
-            <th>Image</th>
-            <th>CreatedAt</th>
-            <th>actions</th>
-        </tr>
-        </thead>
-        <tbody>
+    <div>
+
         {% for articles in article %}
-            <tr>
-                <td>{{ articles.id }}</td>
-                <td>{{ articles.title }}</td>
-                <td>{{ articles.content }}</td>
+            <div>
                 <img src="{{ articles.image }}" class="image">
-                <td>{{ articles.createdAt ? articles.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
+                <section>Id : {{ articles.id }}</section>
+                <section>Title : {{ articles.title }}</section>
+                <section>Content : {{ articles.content }}</section>
+                <section>CreatedAt : {{ articles.createdAt ? articles.createdAt|date('Y-m-d H:i:s') : '' }}</section>
+                <section>Actions :
                     <a href="{{ path('article_show', {'id': articles.id}) }}">show</a>
-                </td>
-            </tr>
+                </section>
+            </div>
         {% else %}
-            <tr>
+            <section>
                 <td colspan="6">no records found</td>
-            </tr>
+            </section>
         {% endfor %}
-        </tbody>
-    </table>
+    </div>
+
 
 {% endblock %}

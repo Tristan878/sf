@@ -3,39 +3,29 @@
 {% block title %}Article index{% endblock %}
 
 {% block body %}
+    <a href="{{ path('admin_article_new') }}">Créer un nouveau article</a>
+
     <h1>Article index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Content</th>
-                <th>Image</th>
-                <th>CreatedAt</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div>
+
         {% for article in articles %}
-            <tr>
-                <td>{{ article.id }}</td>
-                <td>{{ article.title }}</td>
-                <td>{{ article.content }}</td>
-                <img src="{{ article.image }}">
-                <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
+            <div>
+                <img src="{{ article.image }}" class="image">
+                <section>Id : {{ article.id }}</section>
+                <section>Title : {{ article.title }}</section>
+                <section>Content : {{ article.content }}</section>
+                <section>CreatedAt : {{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</section>
+                <section>Actions :
                     <a href="{{ path('admin_article_show', {'id': article.id}) }}">show</a>
                     <a href="{{ path('admin_article_edit', {'id': article.id}) }}">edit</a>
-                </td>
-            </tr>
+                </section>
+            </div>
         {% else %}
-            <tr>
+            <section>
                 <td colspan="6">no records found</td>
-            </tr>
+            </section>
         {% endfor %}
-        </tbody>
-    </table>
+    </div>
 
-    <a href="{{ path('admin_article_new') }}">Create new</a>
 {% endblock %}
