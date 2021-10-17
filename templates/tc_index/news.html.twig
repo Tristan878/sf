@@ -12,7 +12,7 @@
                 <img src="{{ articles.image }}" class="image">
                 <section>Id : {{ articles.id }}</section>
                 <section>Title : {{ articles.title }}</section>
-                <section>Content : {{ articles.content }}</section>
+                <section>Content : {{ articles.content | raw }}</section>
                 <section>CreatedAt : {{ articles.createdAt ? articles.createdAt|date('Y-m-d H:i:s') : '' }}</section>
                 <section>Actions :
                     <a href="{{ path('article_show', {'id': articles.id}) }}">show</a>

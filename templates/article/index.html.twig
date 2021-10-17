@@ -5,16 +5,16 @@
 {% block body %}
     <a href="{{ path('admin_article_new') }}">Créer un nouveau article</a>
 
-    <h1>Article index</h1>
+    <h1>Voici toutes les dernières info sur League of Legend WR!</h1>
 
     <div>
 
         {% for article in articles %}
             <div>
+                <section><h2> {{ article.title }} </h2></section>
                 <img src="{{ article.image }}" class="image">
+                <section>Content : {{ article.content | raw }} </section>
                 <section>Id : {{ article.id }}</section>
-                <section>Title : {{ article.title }}</section>
-                <section>Content : {{ article.content }}</section>
                 <section>CreatedAt : {{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</section>
                 <section>Actions :
                     <a href="{{ path('admin_article_show', {'id': article.id}) }}">show</a>

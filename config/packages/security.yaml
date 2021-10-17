@@ -38,3 +38,6 @@ security:
     access_control:
         - { path: ^/admin/*, roles: ROLE_ADMIN }
         - { path: ^/article/*, roles: ROLE_USER }
+        - { path: ^/video/*, roles: ROLE_USER }
+        - { path: ^/news/*, roles: ROLE_USER }
+        - { path: ^/perso/*, roles: ROLE_USER }
