@@ -9,13 +9,12 @@
 
         {% for articles in article %}
             <div>
+                <section><h2> {{ articles.title }} </h2></section>
                 <img src="{{ articles.image }}" class="image">
-                <section>Id : {{ articles.id }}</section>
-                <section>Title : {{ articles.title }}</section>
-                <section>Content : {{ articles.content }}</section>
-                <section>CreatedAt : {{ articles.createdAt ? articles.createdAt|date('Y-m-d H:i:s') : '' }}</section>
+                <section> {{ articles.content |raw  }}</section>
+                <section> {{ articles.createdAt ? articles.createdAt|date('Y-m-d H:i:s') : '' }}</section>
                 <section>Actions :
-                    <a href="{{ path('article_show', {'id': articles.id}) }}">show</a>
+                    <a href="{{ path('article_show', {'id': articles.id}) }}">Voir plus</a>
                 </section>
             </div>
         {% else %}
@@ -24,6 +23,8 @@
             </section>
         {% endfor %}
     </div>
+
+    <img src="{{ asset('images/fabio.jpg') | imagine_filter('article') }}" alt="image">
 
 
 {% endblock %}

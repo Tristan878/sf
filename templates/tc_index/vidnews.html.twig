@@ -5,34 +5,20 @@
 {% block body %}
     <h1>Video index</h1>
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Irl</th>
-            <th>Createur</th>
-            <th>actions</th>
-        </tr>
-        </thead>
-        <tbody>
+    <div>
         {% for video in videos %}
-            <tr>
-                <td>{{ video.id }}</td>
-                <td>{{ video.name }}</td>
-                <td>{{ video.irl | raw }}</td>
-                <td>{{ video.createur }}</td>
-                <td>
-                    <a href="{{ path('video_show', {'id': video.id}) }}">show</a>
 
-                </td>
-            </tr>
+            <section><h2>{{ video.name }}</h2></section>
+            <section>{{ video.irl | raw }}</section>
+            <section>{{ video.createur }}</section>
+            <section>
+                <a href="{{ path('video_show', {'id': video.id}) }}">Voir plus</a>
+            </section>
         {% else %}
-            <tr>
+            <section>
                 <td colspan="5">no records found</td>
-            </tr>
+            </section>
         {% endfor %}
-        </tbody>
-    </table>
+    </div>
 
 {% endblock %}

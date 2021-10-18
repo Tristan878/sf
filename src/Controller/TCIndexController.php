@@ -82,22 +82,20 @@ class TCIndexController extends AbstractController
 
 
     #[Route('/videonews', name: 'vidnews_index', methods: ['GET'])]
-    public function nidnews(ArticleRepository $articleRepository, \Symfony\Component\HttpFoundation\Request $request): Response
+    public function nidnews(VideoRepository $videoRepository, \Symfony\Component\HttpFoundation\Request $request): Response
     {
-        $vidnews = $this->getDoctrine()->getRepository(Article::class)->findBy(
-            ['type' => '4'],
-            ['createdAt' => 'desc']);
+        $vidnews = $this->getDoctrine()->getRepository(Video::class)->findBy(
+            ['type' => '4']);
 
         return $this->render('tc_index/vidnews.html.twig', [
             'videos' => $vidnews]);
     }
 
     #[Route('/videopart', name: 'vidpart_index', methods: ['GET'])]
-    public function vidpart(ArticleRepository $articleRepository, \Symfony\Component\HttpFoundation\Request $request): Response
+    public function vidpart(VideoRepository $videoRepository, \Symfony\Component\HttpFoundation\Request $request): Response
     {
-        $vidpart = $this->getDoctrine()->getRepository(Article::class)->findBy(
-            ['type' => '5'],
-            ['createdAt' => 'desc']);
+        $vidpart = $this->getDoctrine()->getRepository(Video::class)->findBy(
+            ['type' => '5']);
 
         return $this->render('tc_index/vidnews.html.twig', [
             'videos' => $vidpart]);

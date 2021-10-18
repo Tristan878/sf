@@ -26,7 +26,7 @@ class TCFormulaireController extends AbstractController
             $entityManager->persist($formulaire);
             $entityManager->flush();
 
-            return $this->redirectToRoute('formulaire_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('home', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('tc_formulaire/new.html.twig', [

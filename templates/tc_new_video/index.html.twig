@@ -4,36 +4,25 @@
 
 {% block body %}
     <h1>Video index</h1>
+    <a href="{{ path('admin_newvideo_new') }}">Create new</a>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Irl</th>
-                <th>Createur</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+        <div>
         {% for video in videos %}
-            <tr>
-                <td>{{ video.id }}</td>
-                <td>{{ video.name }}</td>
-                <td>{{ video.irl | raw }}</td>
-                <td>{{ video.createur }}</td>
-                <td>
+
+                <section><h2>{{ video.name }}</h2></section>
+                <section>{{ video.irl | raw }}</section>
+                <section>{{ video.createur }}</section>
+                <section>
                     <a href="{{ path('admin_newvideo_show', {'id': video.id}) }}">show</a>
                     <a href="{{ path('admin_newvideo_edit', {'id': video.id}) }}">edit</a>
-                </td>
-            </tr>
+                </section>
         {% else %}
-            <tr>
+            <section>
                 <td colspan="5">no records found</td>
-            </tr>
+            </section>
         {% endfor %}
-        </tbody>
-    </table>
+        </div>
 
-    <a href="{{ path('admin_newvideo_new') }}">Create new</a>
+
+
 {% endblock %}

@@ -5,25 +5,25 @@
 {% block body %}
     <h1>Voici toutes les dernières info sur League of Legend WR</h1>
 
-    <div>
+<div>
 
-        {% for articles in article %}
-            <div>
-                <img src="{{ articles.image }}" class="image">
-                <section>Id : {{ articles.id }}</section>
-                <section>Title : {{ articles.title }}</section>
-                <section>Content : {{ articles.content | raw }}</section>
-                <section>CreatedAt : {{ articles.createdAt ? articles.createdAt|date('Y-m-d H:i:s') : '' }}</section>
-                <section>Actions :
-                    <a href="{{ path('article_show', {'id': articles.id}) }}">show</a>
-                </section>
-            </div>
-        {% else %}
-            <section>
-                <td colspan="6">no records found</td>
+    {% for articles in article %}
+        <div>
+            <section><h2> {{ articles.title }} </h2></section>
+            <img src="{{ articles.image }}" class="image">
+            <section> {{ articles.content |raw  }}</section>
+            <section> {{ articles.createdAt ? articles.createdAt|date('Y-m-d H:i:s') : '' }}</section>
+            <section>Actions :
+                <a href="{{ path('article_show', {'id': articles.id}) }}">Voir plus</a>
             </section>
-        {% endfor %}
-    </div>
+        </div>
+    {% else %}
+        <section>
+            <td colspan="6">no records found</td>
+        </section>
+    {% endfor %}
+</div>
+
 
 
 {% endblock %}
