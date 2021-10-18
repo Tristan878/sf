@@ -39,6 +39,14 @@ class Video
      */
     private $tags;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="videos")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $type;
+
+
+
     public function __construct()
     {
         $this->tags = new ArrayCollection();
@@ -111,4 +119,20 @@ class Video
 
         return $this;
     }
+
+    public function getType(): ?Type
+    {
+        return $this->type;
+    }
+
+    public function setType(?Type $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+
+
+
 }

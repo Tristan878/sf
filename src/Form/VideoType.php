@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Type;
 use App\Entity\Video;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -15,6 +17,7 @@ class VideoType extends AbstractType
             ->add('name')
             ->add('irl')
             ->add('createur')
+            ->add('type')
         ;
     }
 
